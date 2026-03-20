@@ -14,3 +14,9 @@ pub struct NotificationRepository;
 impl NotificationRepository {
     // Add methods here in the future
 }
+
+pub fn add(notification: Notification) -> Notification {
+    NOTIFICATIONS.write().unwrap()
+        .push(notification.clone());
+    return notification;
+}
