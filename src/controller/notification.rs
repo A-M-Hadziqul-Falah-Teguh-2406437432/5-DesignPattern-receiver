@@ -29,4 +29,12 @@ pub fn receive(notification: Json<Notification>) -> Result<Json<Notification>> {
     };
 }
 
+#[get("/")]
+pub fn list() -> Result<Json<Vec<String>>> {
+    return match NotificationService::list_messages() {
+        Ok(f) => Ok(Json::from(f)),
+        Err(e) => Err(e),
+    };
+}
+
 // Add controller methods here in the future
